@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap');
+        *{
+            padding: 0;
+            margin: 0;
+            
+            background: #1f4037;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #99f2c8, #1f4037);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, hsla(152, 78%, 77%, 0.377), hsla(164, 35%, 19%, 0.387)),url(./img/background.png); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            outline: none;
+
+        }
+        .contenedor{
+            display: flex;
+            flex-direction: column;
+           
+            width: 390px;
+            gap: 5px;
+        }
+        .datos{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;      
+        }
+        .frame{
+            border: 1px solid black;
+            width: 50%;
+            height: 530px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            margin-top: 20px;
+            font-family: "Edu AU VIC WA NT Hand", cursive;
+            background: #1A3636;
+            gap: 25px;
+        }
+
+        .titulo{
+            font-size: 40px;
+            color:#1A3636;
+            margin-top: 50px;
+            padding: 5px 10px;
+            background:#D6BD98;
+            box-shadow: 0 0 30px 0 rgba(22, 44, 14, 0.9);
+        }
+        .datos{
+            padding: 20px;
+            font-size: 20px;
+            background: #1A3636;
+            color: #D6BD98;    
+        }
+        p{
+            padding: 10px 15px;
+            background: #40534C;
+            color:#D6BD98;
+            box-shadow: 0 0 10px 0 rgba(202, 202, 154, 0.9);
+            width: 90%;
+            height: 60px;
+            text-align: center;
+        }
+        .boton{
+            width: 28%;
+            margin-top: 10px;
+            height: 50px;
+            font-size: 25px;
+            box-shadow: 0 0 10px 0 rgba(202, 202, 154, 0.9);
+            background:#677D6A;
+        }
+        .inputDatos{
+            text-align: right;
+            color:black;
+            background:#677D6A;
+            font-size: 18px;
+            height: 30px;
+            width: 70%;
+            padding-right: 5px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .inputDatos:focus{
+            background:#40534C;
+            border-color: #D6BD98;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            color:  #D6BD98; ;
+        }
+        .entrada{
+            width: 50px;
+            height: 30px;
+            background: #1A3636;
+            color:#D6BD98;
+            font-size: 20px;
+            text-align: center;
+        }
+        .campoNumero{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+            padding: 20px;
+            background: #677D6A;
+            margin-top: 10px;
+            box-shadow: 0 0 10px 0 rgba(35, 58, 23, 0.9);
+        }
+        .result{
+            width: 70px;
+        }
+        .signosMostrar{
+            font-size: 30px;
+            background: #677D6A;
+        }
+        .operaciones{
+            margin: 20px;
+            display: flex;
+            gap: 10px;
+            background: #677D6A;
+        }
+        .botonOperaciones{
+            margin: 10px;
+            width: 128px;
+            height: 40px;
+            background:#40534C;
+            color: #D6BD98;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <h2 class="titulo">Informacion Personal</h2>
+   
+        
+        <form class="contenedor">
+            <label for="name" class="datos">Nombre:
+                <input type="text" id="name" class="inputDatos" required>
+            </label>
+            <label for="age" class="datos">Edad:
+                <input type="number" id="age" class="inputDatos" required>
+            </label>
+            <label for="address" class="datos">Direccion:
+                <input type="address" id="address" class="inputDatos" required>
+            </label>
+            <label for="city" class="datos">Ciudad:
+                <input type="text" id="city" class="inputDatos" required>
+            </label>
+            <label for="food" class="datos">Comida:
+                <input type="text" id="food" class="inputDatos" required>
+            </label>
+            
+        </form>
+        <button class="boton" onclick="registrar()">Registrar</button>
+ 
+
+    <div class="frame">
+        <p id="campo1"></p>
+        <p id="campo2"></p>
+        <p id="campo3"></p>
+        <p id="campo4"></p>
+        <p id="campo5"></p>
+    </div>
+
+      
+    <h2 class="titulo">Operaciones Matematicas</h2>
+    <div class="campoNumero">
+        <input class="entrada" type="number" id="num1">
+        <label class="signosMostrar" for="" id="operadorFormula"></label>
+        <input class="entrada" type="number" id="num2">
+        <label class="signosMostrar" for="">=</label>
+        <input class="entrada result" type="number" id="resultado">
+    </div>
+          
+    <div class="operaciones">
+        <button class="botonOperaciones" onmouseover="operacion('+')">Suma</button>
+        <button class="botonOperaciones" ondblclick="operacion('-')">Resta</button>
+        <button class="botonOperaciones" onmouseover="operacion('*')">Multiplicacion</button>
+        <button class="botonOperaciones" ondblclick="operacion('/')">Division</button>
+        <button class="botonOperaciones" ondblclick="promedio()">Promedio</button>
+    </div>
+
+    <script src="operaciones.js"></script><br><br>
+</body>
+</html>
